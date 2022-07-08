@@ -1,0 +1,72 @@
+a{
+    text-decoration: none;
+    color: white;
+    
+}
+
+.header_board{
+    padding: 6px 8px;
+    background-color: #0079BF;
+}
+.lineOne{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.lineTwo{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+nav  ul  li{
+    list-style: none;
+    background-color: rgb(82, 164, 212);
+    padding: 3px 10px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: inline-block;
+
+    
+}
+
+.name-board{
+
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    outline: none;
+    border-radius: 3px;
+  
+}
+
+body{
+    background-color: #0079BF;
+}
+
+
+.textContent{
+    background-color: rgb(82, 164, 212);
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    color: white;
+    outline: none;
+    border-radius: 3px;
+    position: relative;
+    left:  50px;
+    
+}
+
+.buttonCard::placeholder{
+    color: white;
+}
+
+
