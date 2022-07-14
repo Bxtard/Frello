@@ -4,9 +4,9 @@ import  './signup.css';
 
 function SignUp() {
   return(
-    <div>
+    <div className='signup'>
       <header className="signup__header"> <img className="signup__header__logo"  src="..\img\trello.png" alt=""/></header>
-      <div className="signup">
+      <div className="signup__form">
         <h1>Sign up for your account</h1>
         <input className="signup__email "type="email" name="email" placeholder= " Enter email"/>
         <p className="signup__politics">By signing up, you confirm that you've read and accepted our <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>.</p>
@@ -19,8 +19,7 @@ function SignUp() {
         </div>
         <hr/>
         <a href="">Already have an account? Log In</a>
-      </div> 
-   
+      </div>    
       <div className="signup__language">
         <select name="Language Picker" className="signup__language-picker">
           <option value="">Select your language…</option>

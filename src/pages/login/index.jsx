@@ -4,13 +4,14 @@ import  './login.css';
 
 function LogIn() {
   return(
-    <div>
+    <div className='login'>
+      
       <header class="login__header"> <img class="login__header__logo"  src="..\img\trello.png" alt=""/></header>
-      <div class="login">
+      <div class="login__form">
         <h1>Log in to Trello</h1>
         <input class="login__email "type="email" name="email" placeholder= " Enter email"/>
         <input class="login__password "type="password" name="email" placeholder= " Enter password"/>    
-        <button class="login__button"><b>Log in</b> </button>
+        <button class="login__button"><b>Log in</b></button>
         <p>OR</p>
         <div class="login__with">
           <button class="login__with__button"> <img class="login__with__img" src="..\img\google.png" alt=""/> <b>Continue with Google</b> </button>

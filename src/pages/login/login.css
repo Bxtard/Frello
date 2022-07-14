@@ -1,6 +1,18 @@
+.login {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .login__header {
     display: flex;    
     justify-content: space-around;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;  
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .login__header__logo {
@@ -11,7 +23,7 @@
     margin-top: 20px;
     margin-bottom: 40px;
 }
-.login {
+.login__form {
     
     display: block;    
     padding: 10px;
@@ -87,10 +99,14 @@ h1 {
     
 .login__politics {
     display: flex;    
-    justify-content: center;   
-    margin-top: 5px;    
+    justify-content: center;           
     font-size: 15px;   
-    color: #0052CC;
+    color: #0052CC;  
+    width: 350px;       
+    margin-left: auto;
+    margin-right: auto;  
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .login__politics__Service {
@@ -168,7 +184,14 @@ hr {
 .login__language {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 1em;
+    width: 350px;
+    display: flex;    
+    justify-content: space-around;    
+    margin-left: auto;
+    margin-right: auto;    
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .login__language-picker {

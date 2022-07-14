@@ -1,6 +1,18 @@
+.signup {
+    display: flexbox;
+    align-items: center;
+    justify-content: center; 
+}
+
 .signup__header {
     display: flex;    
     justify-content: space-around;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .signup__header__logo {
@@ -9,9 +21,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
-.signup {
+.signup__form {
     
     display: block;    
     padding: 10px;
@@ -69,6 +81,7 @@ h1 {
     font-size: 12px;
     line-height: 16px;
     color: #5E6C84;
+    
 }
 
 .signup__button {    
@@ -127,7 +140,15 @@ hr {
 .signup__language {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 1em;
+    width: 350px;
+    display: flex;    
+    justify-content: space-around;    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;    
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .signup__language-picker {
