@@ -7,7 +7,7 @@ import LogIn from './pages/login';
 
 function App() {
   return (
-    <LogIn/>
+    <SignUp/>
   );
 }
 
