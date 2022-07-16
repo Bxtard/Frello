@@ -7,6 +7,7 @@ import MainBoard from './pages/board';
 import CreateBoard from './pages/createBoard'
 //components
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path= "/board" element={<MainBoard />}/>
         <Route path= "/create_boards" element={<CreateBoard />}/>
       </Routes>
+      <Footer />
+
     </BrowserRouter>
   );
 }
