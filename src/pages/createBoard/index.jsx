@@ -23,8 +23,7 @@ function CreateBoard () {
                         <label className="board__section__background__label">Background</label>
                     </div>
                     <div>
-                        <BackgroundBoard />
-                        <BackgroundBoard />
+                        <BackgroundBoard />                        
                     </div>
                 </div>
 
@@ -35,7 +34,7 @@ function CreateBoard () {
                         </label> 
                         <input className="board__section__input" type="text" required/>
                         <span className="board__section__span--2">👋 Board title is required</span>                        
-                        <button disabled className="board__section__button">Create</button> 
+                        <button className="board__section__button">Create</button> 
                     </div>
                 </form>
                 
