@@ -228,7 +228,7 @@
 }
 
 @media (min-width: 768px) {
-    main {
+    .board {
         position: fixed;
         width: 304px;
         will-change: top, left;
@@ -238,7 +238,7 @@
 }
 
 @media (min-width: 992px) {
-    main {
+    .board {
         position: fixed;
         width: 304px;
         will-change: top, left;
@@ -248,7 +248,7 @@
 }
 
 @media (min-width: 1290px) {
-    main {
+    .board {
         position: fixed;
         width: 304px;
         will-change: top, left;

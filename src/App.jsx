@@ -8,7 +8,7 @@ import CreateBoard from './pages/createBoard';
 
 function App() {
   return (
-    <SignUp/>
+    <CreateBoard/>
   );
 }
 
