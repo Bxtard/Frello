@@ -18,6 +18,7 @@ function App() {
         <Route path= "/board" element={<MainBoard />}/>
       </Routes>
       <Footer />
+
     </BrowserRouter>
   );
 }
