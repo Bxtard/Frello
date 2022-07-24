@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function ToDo() {
-  let Tareas =[]
+function ToDo(props) {
+  const {column} = props;
+  //let Tareas =[]
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
 
@@ -50,7 +51,14 @@ function ToDo() {
     <div className=".ToDo">
       <div className="ToDo__column">
         <div className="ToDo__cards">
-        <span className="ToDo__listTitle"><input type="text" placeholder="Enter list title..." className="ToDo__listTitle__input"></input></span>
+        <span className="ToDo__listTitle"><input type="text" placeholder= {column.name} className="ToDo__listTitle__input"></input></span>
+          
+        </div>
+        <div className="ToDo__submit">
+          <form onSubmit={handlerSubmit}>
+            <span className="ToDo__input"><input className="ToDo__input__text"type="text" placeholder="+ Add a card..." onChange={handlerChange} name="tarea" id="input"/></span>
+            <button type="submit" >Add</button>
+          </form>
           <ul className="ToDo__cardlist">
             {Tasks.map((task) =>{
                   return (
@@ -61,12 +69,6 @@ function ToDo() {
                   )
             })}
           </ul>
-        </div>
-        <div className="ToDo__submit">
-          <form onSubmit={handlerSubmit}>
-            <span className="ToDo__input"><input className="ToDo__input__text"type="text" placeholder="+ Add a card..." onChange={handlerChange} name="tarea" id="input"/></span>
-            <button type="submit" >Add</button>
-          </form>
           <hr className="ToDo_hr"/>
           <span className="ToDo__delete"><button onClick={handlerDelete} >Press to delete checked</button></span>
         </div>
