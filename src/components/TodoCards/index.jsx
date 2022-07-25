@@ -17,20 +17,15 @@ function ToDo(props) {
       checked: false,
       id: Date.now(),
     }
-   /**
-    * ! Lineas dando problemas, porque no permiten agregar tareas en las columnas 2 y 3
-
     if(document.getElementById('input').value !== ''){
       setTasks([...Tasks, object])
-      console.log(Tasks);
       document.getElementById('input').value = '';
     }
-    else{alert("Please, introduce a card");}
-    */
+    else{alert("Please, introduce a card.");}
 
-    setTasks([...Tasks, object])
+   /*  setTasks([...Tasks, object])
       console.log(Tasks);
-      document.getElementById('input').value = '';
+      document.getElementById('input').value = ''; */
   }
 
   const handlerChangeCheck = (id) => {
@@ -52,7 +47,6 @@ function ToDo(props) {
       <div className="ToDo__column">
         <div className="ToDo__cards">
         <span className="ToDo__listTitle"><input type="text" placeholder= {column.name} className="ToDo__listTitle__input"></input></span>
-          
         </div>
         <div className="ToDo__submit">
           <form onSubmit={handlerSubmit}>
@@ -70,7 +64,7 @@ function ToDo(props) {
             })}
           </ul>
           <hr className="ToDo_hr"/>
-          <span className="ToDo__delete"><button onClick={handlerDelete} >Press to delete checked</button></span>
+          <span className="ToDo__delete"><button onClick={handlerDelete} >Press to delete selected</button></span>
         </div>
       </div>
     </div>

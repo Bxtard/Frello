@@ -17,6 +17,7 @@ const handleSubmit = (event)=>{
           tasks: []
 			};
 		    setColums([...columns, newColumn]);
+        event.target.value = "";
 		  }else{
 		    alert("The column name is too long")
 		  }
