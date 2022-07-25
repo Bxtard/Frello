@@ -17,9 +17,9 @@ function ToDo(props) {
       checked: false,
       id: Date.now(),
     }
-    if(document.getElementById('input').value !== ''){
+    if(document.getElementById(column.id).value !== ''){
       setTasks([...Tasks, object])
-      document.getElementById('input').value = '';
+      document.getElementById(column.id).value = '';
     }
     else{alert("Please, introduce a card.");}
 
@@ -50,7 +50,7 @@ function ToDo(props) {
         </div>
         <div className="ToDo__submit">
           <form onSubmit={handlerSubmit}>
-            <span className="ToDo__input"><input className="ToDo__input__text"type="text" placeholder="+ Add a card..." onChange={handlerChange} name="tarea" id="input"/></span>
+            <span className="ToDo__input"><input className="ToDo__input__text"type="text" placeholder="+ Add a card..." onChange={handlerChange} name="tarea" id={column.id}/></span>
             <button type="submit" >Add</button>
           </form>
           <ul className="ToDo__cardlist">
