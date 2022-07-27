@@ -26,8 +26,7 @@ function ToDo({ column }) {
   const handlerChangeCheck = id => {
     const newTasks = Tasks.map(task => {
       if (task.id === id) {
-        const temTask = task.checked
-        task.checked = !temTask;
+        task.checked = !task.checked;
       }
       return task;
     });
