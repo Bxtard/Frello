@@ -6,28 +6,15 @@ function LogIn() {
   const navigate = useNavigate();
   const [form, setForm] = useState({});
 
-/*   useEffect(() => {
-    const fetchData = async () => {
-      const findUser = await getUserBy('email', form.email);
-      console.log(findUser.password, form.password);
-      if (findUser?.password === form?.password) {
-        navigate(`/manage_board/${findUser.id}`, { replace: true });
-      }
-      alert('invalid credentials');
-    };
-    fetchData();
-  } */
-
   const handleLogin = (e) => {
     e.preventDefault();
     const fetchData = async () => {
       const findUser = await getUserBy('email', form.email);
-      console.log(findUser.email, form.email);
-      console.log(findUser.password, form.password);
-      if (findUser?.password === form?.password) {
-        navigate(`/manage_board/${findUser.id}`, { replace: true });
+      if (findUser[0]?.email === form?.email && findUser[0]?.password === form?.password) {
+        navigate(`/manage_board/${findUser[0].id}`, { replace: true });
+      }else{
+        alert('invalid credentials');
       }
-      alert('invalid credentials');
     };
     fetchData();
   };

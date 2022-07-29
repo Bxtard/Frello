@@ -5,16 +5,16 @@
       "name": "David",
       "img": "",
       "userName": "Davincho",
-      "email": "davincho@gmail.com",
-      "password": "1234567890abc",
+      "email": "david@mail.com",
+      "password": "abc123123",
       "boards": []
     },
     {
       "id": 2,
-      "name": "Mauro",
+      "name": "Mauricio",
       "img": "",
       "userName": "Mauhack",
-      "email": "Mauhack@gmail.com",
+      "email": "mauricio@mail.com",
       "password": "abc123123",
       "boards": [
         {
@@ -43,8 +43,8 @@
       "name": "Bryan",
       "img": "",
       "userName": "Bxtard",
-      "email": "bxtard@gmail.com",
-      "password": "wsl321",
+      "email": "bryan@mail.com",
+      "password": "abc123123",
       "boards": [
         {
           "id": 2,
@@ -72,8 +72,8 @@
       "name": "Guillo",
       "img": "",
       "userName": "Guillocuras",
-      "email": "guillocuras@gmail.com",
-      "password": "cba321",
+      "email": "guillermo@mail.com",
+      "password": "abc123123",
       "boards": [
         {
           "id": 3,

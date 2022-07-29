@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/api/users';
+const BASE_URL = 'http://localhost:8080/api/users/';
 
 export async function getUsers() {
   const response = await fetch(`${BASE_URL}`);
@@ -6,18 +6,15 @@ export async function getUsers() {
 }
 
 export async function getUser(id) {
-  // code here
   const response = await fetch(`${BASE_URL}${id}`);
   return response.json();
 }
 export async function getUserBy(name, value) {
-  // code here
   const response = await fetch(`${BASE_URL}?${name}_like=${value}`);
   return response.json();
 }
 
 export async function createUser(user) {
-  // code here
   const response = await fetch(`${BASE_URL}`, {
     method: 'POST',
     headers: {
