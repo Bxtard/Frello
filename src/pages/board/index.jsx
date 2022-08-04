@@ -6,9 +6,10 @@ import ToDo from '../../components/TodoCards';
 
 function MainBoard() {
   /*
- Este useState es para agregar cada columna de las tarjetas. Usa props para colocar el nombre 
+ Este useState es para agregar cada columna de las tarjetas. Usa props para colocar el nombre
 */
   const [columns, setColums] = useState([]);
+  const [Task, setTask] = useState({});
 
   const handleSubmit = event => {
     if (event.code === 'Enter' && event.target.value !== '') {
@@ -24,6 +25,28 @@ function MainBoard() {
         alert('The column name is too long');
       }
     }
+  };
+
+  const onDragOver = ev => {
+    ev.preventDefault();
+  };
+
+  const taskTaker = Taker => {
+    setTask(Taker);
+    console.log('🚀 ~ file: index.jsx ~ line 36 ~ MainBoard ~ Taker', Task);
+  };
+
+  const onDrop = (ev, newColumnId) => {
+    const id = ev.dataTransfer.getData('id');
+    console.log('dragOver', id);
+    columns.map(column => {
+      if (column.id === newColumnId) {
+        const newColumn = [...column, Task];
+        setColums([newColumn]);
+        console.log(columns);
+      }
+      return column;
+    });
   };
 
   return (
@@ -76,8 +99,16 @@ function MainBoard() {
             <div>
               <ul className='list__Columns__Board'>
                 {columns.map(column => (
-                  <li key={column.id} className='colums'>
-                    <ToDo column={column} />
+                  <li
+                    key={column.id}
+                    className='colums'
+                    onDragOver={e => onDragOver(e)}
+                    onDrop={e => {
+                      onDrop(e, column.id);
+                    }}
+                  >
+                    <ToDo column={column} taskTaker={taskTaker} />
+                    {column.id}
                   </li>
                 ))}
               </ul>

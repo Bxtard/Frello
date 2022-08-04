@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
-function ToDo({ column }) {
+function ToDo({ column, taskTaker }) {
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
 
@@ -15,6 +15,7 @@ function ToDo({ column }) {
       texto: Texto,
       checked: false,
       id: Date.now(),
+      columnId: column.id,
     };
     if (document.getElementById(column.id).value !== '') {
       setTasks([...Tasks, object]);
@@ -30,12 +31,19 @@ function ToDo({ column }) {
       }
       return task;
     });
-    setTasks(newTasks);    
+    setTasks(newTasks);
   };
   const handlerDelete = () => {
     const newTasks = Tasks.filter(task => task.checked === false);
     setTasks(newTasks);
   };
+
+  const onDragStart = (ev, id, columnId, task) => {
+    console.log('dragstart:', id, columnId);
+    ev.dataTransfer.setData('id', id);
+    taskTaker(task, setTasks, Tasks);
+  };
+
   return (
     <div className='.ToDo'>
       <div className='ToDo__column'>
@@ -45,7 +53,7 @@ function ToDo({ column }) {
               type='text'
               placeholder={column.name}
               className='ToDo__listTitle__input'
-             />
+            />
           </span>
         </div>
         <div className='ToDo__submit'>
@@ -64,20 +72,27 @@ function ToDo({ column }) {
           </form>
           <ul className='ToDo__cardlist'>
             {Tasks.map(task => (
-                <li key={task.id} className='ToDo__cardlist__item'>
-                  <input
-                    type='checkbox'
-                    onChange={() => {
-                      handlerChangeCheck(task.id);
-                    }}
-                  />
-                  {task.texto}
-                </li>
-              ))}
+              <li
+                key={task.id}
+                className='ToDo__cardlist__item'
+                draggable
+                onDragStart={e => onDragStart(e, task.id, task.columnId, task)}
+              >
+                <input
+                  type='checkbox'
+                  onChange={() => {
+                    handlerChangeCheck(task.id);
+                  }}
+                />
+                {task.texto}
+              </li>
+            ))}
           </ul>
           <hr className='ToDo_hr' />
           <span className='ToDo__delete'>
-            <button type= "button" onClick={handlerDelete}>Press to delete selected</button>
+            <button type='button' onClick={handlerDelete}>
+              Press to delete selected
+            </button>
           </span>
         </div>
       </div>
@@ -86,9 +101,14 @@ function ToDo({ column }) {
 }
 
 ToDo.propTypes = {
-  column: PropTypes.shape()
+  column: PropTypes.shape(),
 };
 ToDo.defaultProps = {
-  column: {}
+  column: {},
 };
+
+ToDo.propTypes = {
+  taskTaker: PropTypes.func.isRequired,
+};
+
 export default ToDo;
