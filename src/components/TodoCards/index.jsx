@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
-function ToDo({ column, taskTaker, Task, columns, setColums }) {
+function ToDo({ column, taskTaker, Task }) {
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
 
@@ -43,22 +43,15 @@ function ToDo({ column, taskTaker, Task, columns, setColums }) {
     ev.dataTransfer.setData('id', id);
     taskTaker(task, setTasks, Tasks);
   };
-  /*   const handlerOnDragEnd = () => {
-    const movedTasks = Tasks.filter(item => item.columnId !== column.id);
+  const handlerOnDragEnd = () => {
+    const movedTasks = Tasks.filter(item => item.columnId === column.id);
     setTasks(movedTasks);
-  }; */
+    console.log('Dragged tasks:', movedTasks);
+  };
   const handlerDrop = () => {
     if (Task.columnId !== column.id) {
       const droppedTasks = [...Tasks, Task];
-      console.log(
-        '🚀 ~ file: index.jsx ~ line 48 ~ handlerDrop ~ moveTasks',
-        droppedTasks
-      );
-      const newColumns = columns.map(
-        (col => col.id === column.id)
-        col.findIdex
-      )
-      , setColums
+      console.log('Dropped tasks:', droppedTasks);
 
       setTasks(droppedTasks);
     }
@@ -97,8 +90,10 @@ function ToDo({ column, taskTaker, Task, columns, setColums }) {
                 className='ToDo__cardlist__item'
                 draggable
                 onDragStart={e => onDragStart(e, task.id, task.columnId, task)}
-                onDrop={handlerDrop(task.columnId)}
-                // onDragEnd={e =>handlerOnDragEnd(e, task.id, task.columnId, task)               }
+                onDrop={handlerDrop}
+                onDragEnd={e =>
+                  handlerOnDragEnd(e, task.id, task.columnId, task)
+                }
               >
                 <input
                   type='checkbox'
@@ -126,12 +121,19 @@ function ToDo({ column, taskTaker, Task, columns, setColums }) {
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
-  taskTaker: PropTypes.func,
-  Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
   column: {},
-  taskTaker: () => null,
+};
+
+ToDo.propTypes = {
+  taskTaker: PropTypes.func.isRequired,
+};
+
+ToDo.propTypes = {
+  Task: PropTypes.shape(),
+};
+ToDo.defaultProps = {
   Task: {},
 };
 

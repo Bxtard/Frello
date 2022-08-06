@@ -77,6 +77,8 @@ button {
   padding: 0;
   list-style: none;
   text-align: left;
+  border: 5px solid black;
+  min-height: 100px;
 }
 .ToDo__cardlist__item {
   border-radius: 3px;
@@ -86,6 +88,7 @@ button {
   padding-left: 0px;
   border: 1px solid rgb(207, 205, 205);
   cursor: pointer;
+  min-height: 100px;
 }
 .ToDo__delete {
   display: flex;

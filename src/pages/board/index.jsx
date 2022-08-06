@@ -33,13 +33,12 @@ function MainBoard() {
 
   const taskTaker = Taker => {
     setTask(Taker);
-    console.log('🚀 ~ file: index.jsx ~ line 36 ~ MainBoard ~ Taker', Task);
   };
 
   const onDrop = (ev, newColumnId) => {
     const id = ev.dataTransfer.getData('id');
     console.log('Dropped', id, newColumnId);
-    Task.ColumnId = newColumnId;
+    Task.columnId = newColumnId;
     /* columns.map(column => {
       if (column.id === newColumnId) {
         const newColumn = [...column, Task];
