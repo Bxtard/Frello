@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
-function ToDo({ column, taskTaker }) {
+function ToDo({ column, taskTaker, Task, columns, setColums }) {
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
 
@@ -43,6 +43,26 @@ function ToDo({ column, taskTaker }) {
     ev.dataTransfer.setData('id', id);
     taskTaker(task, setTasks, Tasks);
   };
+  /*   const handlerOnDragEnd = () => {
+    const movedTasks = Tasks.filter(item => item.columnId !== column.id);
+    setTasks(movedTasks);
+  }; */
+  const handlerDrop = () => {
+    if (Task.columnId !== column.id) {
+      const droppedTasks = [...Tasks, Task];
+      console.log(
+        '🚀 ~ file: index.jsx ~ line 48 ~ handlerDrop ~ moveTasks',
+        droppedTasks
+      );
+      const newColumns = columns.map(
+        (col => col.id === column.id)
+        col.findIdex
+      )
+      , setColums
+
+      setTasks(droppedTasks);
+    }
+  };
 
   return (
     <div className='.ToDo'>
@@ -77,6 +97,8 @@ function ToDo({ column, taskTaker }) {
                 className='ToDo__cardlist__item'
                 draggable
                 onDragStart={e => onDragStart(e, task.id, task.columnId, task)}
+                onDrop={handlerDrop(task.columnId)}
+                // onDragEnd={e =>handlerOnDragEnd(e, task.id, task.columnId, task)               }
               >
                 <input
                   type='checkbox'
@@ -85,6 +107,8 @@ function ToDo({ column, taskTaker }) {
                   }}
                 />
                 {task.texto}
+                <br />
+                {task.id}
               </li>
             ))}
           </ul>
@@ -102,13 +126,13 @@ function ToDo({ column, taskTaker }) {
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
+  taskTaker: PropTypes.func,
+  Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
   column: {},
-};
-
-ToDo.propTypes = {
-  taskTaker: PropTypes.func.isRequired,
+  taskTaker: () => null,
+  Task: {},
 };
 
 export default ToDo;

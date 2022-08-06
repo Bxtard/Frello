@@ -38,15 +38,16 @@ function MainBoard() {
 
   const onDrop = (ev, newColumnId) => {
     const id = ev.dataTransfer.getData('id');
-    console.log('dragOver', id);
-    columns.map(column => {
+    console.log('Dropped', id, newColumnId);
+    Task.ColumnId = newColumnId;
+    /* columns.map(column => {
       if (column.id === newColumnId) {
         const newColumn = [...column, Task];
         setColums([newColumn]);
         console.log(columns);
       }
       return column;
-    });
+    }); */
   };
 
   return (
@@ -107,7 +108,13 @@ function MainBoard() {
                       onDrop(e, column.id);
                     }}
                   >
-                    <ToDo column={column} taskTaker={taskTaker} />
+                    <ToDo
+                      column={column}
+                      taskTaker={taskTaker}
+                      Task={Task}
+                      columns={columns}
+                      setColums={setColums}
+                    />
                     {column.id}
                   </li>
                 ))}
