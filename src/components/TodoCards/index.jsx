@@ -17,9 +17,9 @@ function ToDo({ column, taskTaker, Task }) {
       id: Date.now(),
       columnId: column.id,
     };
-    if (document.getElementById(column.id).value !== '') {
+    if (document.getElementById(column.inputId).value !== '') {
       setTasks([...Tasks, object]);
-      document.getElementById(column.id).value = '';
+      document.getElementById(column.inputId).value = '';
     } else {
       alert('Please, introduce a card.');
     }
@@ -78,7 +78,7 @@ function ToDo({ column, taskTaker, Task }) {
                 placeholder='+ Add a card...'
                 onChange={handlerChange}
                 name='tarea'
-                id={column.id}
+                id={column.inputId}
               />
             </span>
             <button type='submit'>Add</button>

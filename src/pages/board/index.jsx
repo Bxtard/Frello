@@ -18,6 +18,7 @@ function MainBoard() {
           name: event.target.value,
           id: Date.now(),
           tasks: [],
+          inputId: Date.now() + 1,
         };
         setColums([...columns, newColumn]);
         event.target.value = '';
