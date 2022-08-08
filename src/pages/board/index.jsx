@@ -39,14 +39,6 @@ function MainBoard() {
     const id = ev.dataTransfer.getData('id');
     console.log('Dropped', id, newColumnId);
     Task.columnId = newColumnId;
-    /* columns.map(column => {
-      if (column.id === newColumnId) {
-        const newColumn = [...column, Task];
-        setColums([newColumn]);
-        console.log(columns);
-      }
-      return column;
-    }); */
   };
 
   return (

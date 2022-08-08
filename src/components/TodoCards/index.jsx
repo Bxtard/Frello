@@ -121,20 +121,13 @@ function ToDo({ column, taskTaker, Task }) {
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
-};
-ToDo.defaultProps = {
-  column: {},
-};
-
-ToDo.propTypes = {
-  taskTaker: PropTypes.func.isRequired,
-};
-
-ToDo.propTypes = {
+  taskTaker: PropTypes.func,
   Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
+  column: {},
   Task: {},
+  taskTaker: () => null,
 };
 
 export default ToDo;

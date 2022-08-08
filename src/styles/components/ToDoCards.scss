@@ -53,7 +53,6 @@ button {
   margin-top: 10px;
   margin-right: 10px;
   text-decoration: none;
-  cursor: pointer;
   text-align: left;
 }
 .ToDo__submit {
@@ -63,7 +62,6 @@ button {
   margin-top: 10px;
   margin-right: 100px;
   text-decoration: none;
-  cursor: pointer;
   justify-content: center;
 }
 .ToDo_hr {
@@ -77,8 +75,7 @@ button {
   padding: 0;
   list-style: none;
   text-align: left;
-  border: 5px solid black;
-  min-height: 100px;
+  height: auto;
 }
 .ToDo__cardlist__item {
   border-radius: 3px;
@@ -87,8 +84,8 @@ button {
   margin-left: 0px;
   padding-left: 0px;
   border: 1px solid rgb(207, 205, 205);
-  cursor: pointer;
-  min-height: 100px;
+  cursor:-webkit-grab;
+  height: auto;
 }
 .ToDo__delete {
   display: flex;
