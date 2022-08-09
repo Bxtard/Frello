@@ -47,6 +47,7 @@ function ToDo({ column, taskTaker, Task }) {
         <ul className='ToDo__cardlist' id={column.id}>
           {Tasks.map(card => (
             <Card
+              key={card.id}
               card={card}
               taskTaker={taskTaker}
               Task={Task}
