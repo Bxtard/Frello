@@ -87,6 +87,20 @@ button {
   cursor:-webkit-grab;
   height: auto;
 }
+.ToDo__cardlist__item--dragged{
+  border-radius: 3px;
+  background-color: rgb(196, 196, 196);
+  margin-top: 5px;
+  margin-left: 0px;
+  padding-left: 0px;
+  border: 1px solid rgb(207, 205, 205);
+  cursor:grabbing;
+  height: auto;
+  opacity: 0.5;
+  transform: scaleY(1.2) rotate(2deg);
+
+
+}
 .ToDo__delete {
   display: flex;
   justify-content: center;

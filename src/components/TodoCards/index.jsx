@@ -39,22 +39,25 @@ function ToDo({ column, taskTaker, Task }) {
   };
 
   const onDragStart = (ev, id, columnId, task) => {
-    console.log('dragstart:', id, columnId);
-    ev.dataTransfer.setData('id', id);
-    taskTaker(task, setTasks, Tasks);
+    document.getElementById(task.id).className =
+      'ToDo__cardlist__item--dragged';
+    taskTaker(task);
   };
-  const handlerOnDragEnd = () => {
+  const handlerOnDragEnd = (_e, task) => {
+    document.getElementById(task.id).className = 'ToDo__cardlist__item';
     const movedTasks = Tasks.filter(item => item.columnId === column.id);
     setTasks(movedTasks);
-    console.log('Dragged tasks:', movedTasks);
   };
-  const handlerDrop = () => {
+  const handlerOnDrop = (_e, newColumnId) => {
     if (Task.columnId !== column.id) {
+      Task.columnId = newColumnId;
       const droppedTasks = [...Tasks, Task];
-      console.log('Dropped tasks:', droppedTasks);
-
       setTasks(droppedTasks);
     }
+  };
+
+  const onDragOver = ev => {
+    ev.preventDefault();
   };
 
   return (
@@ -83,17 +86,19 @@ function ToDo({ column, taskTaker, Task }) {
             </span>
             <button type='submit'>Add</button>
           </form>
-          <ul className='ToDo__cardlist'>
+          <ul className='ToDo__cardlist' id={column.id}>
             {Tasks.map(task => (
               <li
+                id={task.id}
                 key={task.id}
                 className='ToDo__cardlist__item'
                 draggable
                 onDragStart={e => onDragStart(e, task.id, task.columnId, task)}
-                onDrop={handlerDrop}
-                onDragEnd={e =>
-                  handlerOnDragEnd(e, task.id, task.columnId, task)
-                }
+                onDrop={e => {
+                  handlerOnDrop(e, column.id);
+                }}
+                onDragEnd={e => handlerOnDragEnd(e, task)}
+                onDragOver={e => onDragOver(e)}
               >
                 <input
                   type='checkbox'
@@ -104,6 +109,8 @@ function ToDo({ column, taskTaker, Task }) {
                 {task.texto}
                 <br />
                 {task.id}
+                <br />
+                {task.columnId}
               </li>
             ))}
           </ul>

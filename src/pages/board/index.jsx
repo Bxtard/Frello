@@ -28,18 +28,8 @@ function MainBoard() {
     }
   };
 
-  const onDragOver = ev => {
-    ev.preventDefault();
-  };
-
   const taskTaker = Taker => {
     setTask(Taker);
-  };
-
-  const onDrop = (ev, newColumnId) => {
-    const id = ev.dataTransfer.getData('id');
-    console.log('Dropped', id, newColumnId);
-    Task.columnId = newColumnId;
   };
 
   return (
@@ -92,21 +82,8 @@ function MainBoard() {
             <div>
               <ul className='list__Columns__Board'>
                 {columns.map(column => (
-                  <li
-                    key={column.id}
-                    className='colums'
-                    onDragOver={e => onDragOver(e)}
-                    onDrop={e => {
-                      onDrop(e, column.id);
-                    }}
-                  >
-                    <ToDo
-                      column={column}
-                      taskTaker={taskTaker}
-                      Task={Task}
-                      columns={columns}
-                      setColums={setColums}
-                    />
+                  <li key={column.id} className='colums'>
+                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
                     {column.id}
                   </li>
                 ))}
