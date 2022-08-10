@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { ReactSortable } from "react-sortablejs";
 import {
   handlerChange,
   handlerSubmit,
   handlerDelete,
-  handlerOnDrop,
+/*   handlerOnDrop,
   handlerOnDragEnd,
-  handlerOnDragOver,
+  handlerOnDragOver, */
 } from './handlers';
 import Card from './Card';
 
@@ -19,11 +20,11 @@ function ToDo({ column, taskTaker, Task }) {
   return (
     <div
       className='ToDo__column'
-      onDrop={e => {
+     /*  onDrop={e => {
         handlerOnDrop(e, column.id, Task, Tasks, setTasks, column);
       }}
       onDragEnd={e => handlerOnDragEnd(e, Task, Tasks, setTasks, column)}
-      onDragOver={e => handlerOnDragOver(e)}
+      onDragOver={e => handlerOnDragOver(e)} */
     >
       <section className='ToDo__cards'>
         <input
@@ -45,6 +46,14 @@ function ToDo({ column, taskTaker, Task }) {
           <button type='submit'>Add</button>
         </form>
         <ul className='ToDo__cardlist' id={column.id}>
+        <ReactSortable
+        list={Tasks}
+        setList={setTasks}
+        group="groupName"
+        animation={200}
+        /* delayOnTouchStart={true} */
+        delay={2}
+      >
           {Tasks.map(card => (
             <Card
               key={card.id}
@@ -56,6 +65,7 @@ function ToDo({ column, taskTaker, Task }) {
               setTasks={setTasks}
             />
           ))}
+          </ReactSortable>
         </ul>
         <hr className='ToDo_hr' />
         <span className='ToDo__delete'>

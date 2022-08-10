@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
+import { ReactSortable } from "react-sortablejs";
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
@@ -8,7 +9,7 @@ function MainBoard() {
   /*
  Este useState es para agregar cada columna de las tarjetas. Usa props para colocar el nombre
 */
-  const [columns, setColums] = useState([]);
+  const [columns, setColumns] = useState([]);
   const [Task, setTask] = useState({});
 
   const handleSubmit = event => {
@@ -20,7 +21,7 @@ function MainBoard() {
           tasks: [],
           inputId: Date.now() + 1,
         };
-        setColums([...columns, newColumn]);
+        setColumns([...columns, newColumn]);
         event.target.value = '';
       } else {
         alert('The column name is too long');
@@ -81,12 +82,22 @@ function MainBoard() {
             />
             <div>
               <ul className='list__Columns__Board'>
+              <ReactSortable
+        list={columns}
+        setList={setColumns}
+        group="group"
+        animation={200}
+        className='list__Columns__Board'
+        /* delayOnTouchStart={true} */
+        delay={2}
+      >
                 {columns.map(column => (
                   <li key={column.id} className='colums'>
                     <ToDo column={column} taskTaker={taskTaker} Task={Task} />
                     {column.id}
                   </li>
                 ))}
+              </ReactSortable>
               </ul>
             </div>
           </div>
