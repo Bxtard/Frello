@@ -30,31 +30,3 @@ export const handlerDelete = (Tasks, setTasks) => {
   const newTasks = Tasks.filter(task => task.checked === false);
   setTasks(newTasks);
 };
-
-export const handlerOnDragStart = (_ev, task, taskTaker) => {
-  document.getElementById(task.id).className = 'ToDo__cardlist__item--dragged';
-  taskTaker(task);
-};
-export const handlerOnDragEnd = (_e, task, Tasks, setTasks, column) => {
-  document.getElementById(task.id).className = 'ToDo__cardlist__item';
-  const movedTasks = Tasks.filter(item => item.columnId === column.id);
-  setTasks(movedTasks);
-};
-export const handlerOnDrop = (
-  _e,
-  newColumnId,
-  Task,
-  Tasks,
-  setTasks,
-  column
-) => {
-  if (Task.columnId !== column.id) {
-    Task.columnId = newColumnId;
-    const droppedTasks = [...Tasks, Task];
-    setTasks(droppedTasks);
-  }
-};
-
-export const handlerOnDragOver = ev => {
-  ev.preventDefault();
-};

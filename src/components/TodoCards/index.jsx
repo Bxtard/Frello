@@ -2,36 +2,27 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 
-import {
-  handlerChange,
-  handlerSubmit,
-  handlerDelete,
-  /*   handlerOnDrop,
-  handlerOnDragEnd,
-  handlerOnDragOver, */
-} from './handlers';
+import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
 import Card from './Card';
 
 function ToDo({ column, taskTaker, Task }) {
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
-  /*   const draggables = document.querySelectorAll('.draggable');
-  const containers = document.querySelectorAll('.container'); */
 
   return (
-    <div
-      className='ToDo__column'
-      /*  onDrop={e => {
-        handlerOnDrop(e, column.id, Task, Tasks, setTasks, column);
-      }}
-      onDragEnd={e => handlerOnDragEnd(e, Task, Tasks, setTasks, column)}
-      onDragOver={e => handlerOnDragOver(e)} */
-    >
+    <div className='ToDo__column'>
+      <div className='ToDo__DragImg'>
+        <img
+          alt=''
+          src='https://pic.onlinewebfonts.com/svg/img_68260.png'
+          className='columns__handler'
+        />
+      </div>
       <section className='ToDo__cards'>
         <input
           type='text'
-          placeholder={column.name}
           className='ToDo__listTitle__input'
+          defaultValue={column.name}
         />
       </section>
       <div className='ToDo__submit'>
@@ -44,21 +35,23 @@ function ToDo({ column, taskTaker, Task }) {
             name='tarea'
             id={column.inputId}
           />
-          <button type='submit'>Add</button>
+          <button type='submit' className='non-draggable'>
+            Add
+          </button>
         </form>
         <ReactSortable
           id={column.id}
           list={Tasks}
           setList={setTasks}
           group='groupName'
-          animation={200}
-          delay={50}
-          easing='cubic-bezier(0.12, 0, 0.39, 0);'
+          animation={150}
+          delay={10}
           className='ToDo__cardlist'
           chosenClass='sortable-chosen'
           dragClass='sortable-drag'
           ghostClass='sortable-ghost'
           tag='ul'
+          filter='.non-draggable'
         >
           {Tasks.map(card => (
             <Card
@@ -75,7 +68,11 @@ function ToDo({ column, taskTaker, Task }) {
 
         <hr className='ToDo_hr' />
         <span className='ToDo__delete'>
-          <button type='button' onClick={() => handlerDelete(Tasks, setTasks)}>
+          <button
+            type='button'
+            onClick={() => handlerDelete(Tasks, setTasks)}
+            className='non-draggable'
+          >
             Press to delete selected
           </button>
         </span>

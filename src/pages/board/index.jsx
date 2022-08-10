@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import NavBar from '../../components/NavBar';
@@ -6,9 +5,6 @@ import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
 
 function MainBoard() {
-  /*
- Este useState es para agregar cada columna de las tarjetas. Usa props para colocar el nombre
-*/
   const [columns, setColumns] = useState([]);
   const [Task, setTask] = useState({});
 
@@ -81,24 +77,25 @@ function MainBoard() {
               placeholder='+ Add a list'
             />
             <div>
-              <ul>
-                <ReactSortable
-                  list={columns}
-                  setList={setColumns}
-                  group='group'
-                  animation={200}
-                  className='list__Columns__Board'
-                  /* delayOnTouchStart={true} */
-                  delay={2}
-                >
-                  {columns.map(column => (
-                    <li key={column.id} className='colums'>
-                      <ToDo column={column} taskTaker={taskTaker} Task={Task} />
-                      {column.id}
-                    </li>
-                  ))}
-                </ReactSortable>
-              </ul>
+              <ReactSortable
+                list={columns}
+                setList={setColumns}
+                group='group'
+                animation={150}
+                className='list__Columns__Board'
+                delay={20}
+                chosenClass='sortable-chosen'
+                dragClass='sortable-drag'
+                ghostClass='sortable-ghost'
+                tag='ul'
+                handle='.columns__handler'
+              >
+                {columns.map(column => (
+                  <li key={column.id} className='columns'>
+                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
+                  </li>
+                ))}
+              </ReactSortable>
             </div>
           </div>
         </div>
