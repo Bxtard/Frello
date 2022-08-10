@@ -6,7 +6,7 @@ function Card({ card, Tasks, setTasks }) {
   return (
     <li id={card.id} className='ToDo__cardlist__item'>
       <input
-        className='non-draggable'
+        className='non-draggable ToDo__Checkbox'
         type='checkbox'
         onChange={() => {
           handlerChangeCheck(card.id, Tasks, setTasks);

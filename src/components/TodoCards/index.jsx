@@ -35,7 +35,7 @@ function ToDo({ column, taskTaker, Task }) {
             name='tarea'
             id={column.inputId}
           />
-          <button type='submit' className='non-draggable'>
+          <button type='submit' className='ToDo__AddButton'>
             Add
           </button>
         </form>
@@ -71,7 +71,7 @@ function ToDo({ column, taskTaker, Task }) {
           <button
             type='button'
             onClick={() => handlerDelete(Tasks, setTasks)}
-            className='non-draggable'
+            className='ToDo__DeleteButton'
           >
             Press to delete selected
           </button>
