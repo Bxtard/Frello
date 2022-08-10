@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
-import { ReactSortable } from "react-sortablejs";
+import { ReactSortable } from 'react-sortablejs';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
@@ -81,23 +81,23 @@ function MainBoard() {
               placeholder='+ Add a list'
             />
             <div>
-              <ul className='list__Columns__Board'>
-              <ReactSortable
-        list={columns}
-        setList={setColumns}
-        group="group"
-        animation={200}
-        className='list__Columns__Board'
-        /* delayOnTouchStart={true} */
-        delay={2}
-      >
-                {columns.map(column => (
-                  <li key={column.id} className='colums'>
-                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
-                    {column.id}
-                  </li>
-                ))}
-              </ReactSortable>
+              <ul>
+                <ReactSortable
+                  list={columns}
+                  setList={setColumns}
+                  group='group'
+                  animation={200}
+                  className='list__Columns__Board'
+                  /* delayOnTouchStart={true} */
+                  delay={2}
+                >
+                  {columns.map(column => (
+                    <li key={column.id} className='colums'>
+                      <ToDo column={column} taskTaker={taskTaker} Task={Task} />
+                      {column.id}
+                    </li>
+                  ))}
+                </ReactSortable>
               </ul>
             </div>
           </div>

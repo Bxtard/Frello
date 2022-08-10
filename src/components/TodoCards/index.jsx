@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { ReactSortable } from "react-sortablejs";
+import { ReactSortable } from 'react-sortablejs';
+
 import {
   handlerChange,
   handlerSubmit,
   handlerDelete,
-/*   handlerOnDrop,
+  /*   handlerOnDrop,
   handlerOnDragEnd,
   handlerOnDragOver, */
 } from './handlers';
@@ -20,7 +21,7 @@ function ToDo({ column, taskTaker, Task }) {
   return (
     <div
       className='ToDo__column'
-     /*  onDrop={e => {
+      /*  onDrop={e => {
         handlerOnDrop(e, column.id, Task, Tasks, setTasks, column);
       }}
       onDragEnd={e => handlerOnDragEnd(e, Task, Tasks, setTasks, column)}
@@ -45,15 +46,20 @@ function ToDo({ column, taskTaker, Task }) {
           />
           <button type='submit'>Add</button>
         </form>
-        <ul className='ToDo__cardlist' id={column.id}>
         <ReactSortable
-        list={Tasks}
-        setList={setTasks}
-        group="groupName"
-        animation={200}
-        /* delayOnTouchStart={true} */
-        delay={2}
-      >
+          id={column.id}
+          list={Tasks}
+          setList={setTasks}
+          group='groupName'
+          animation={200}
+          delay={50}
+          easing='cubic-bezier(0.12, 0, 0.39, 0);'
+          className='ToDo__cardlist'
+          chosenClass='sortable-chosen'
+          dragClass='sortable-drag'
+          ghostClass='sortable-ghost'
+          tag='ul'
+        >
           {Tasks.map(card => (
             <Card
               key={card.id}
@@ -65,8 +71,8 @@ function ToDo({ column, taskTaker, Task }) {
               setTasks={setTasks}
             />
           ))}
-          </ReactSortable>
-        </ul>
+        </ReactSortable>
+
         <hr className='ToDo_hr' />
         <span className='ToDo__delete'>
           <button type='button' onClick={() => handlerDelete(Tasks, setTasks)}>

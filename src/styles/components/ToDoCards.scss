@@ -81,7 +81,7 @@ button {
   cursor:-webkit-grab;
   height: auto;
 }
-.ToDo__cardlist__item--dragged{
+.sortable-chosen{
   border-radius: 3px;
   background-color: rgb(196, 196, 196);
   margin-top: 5px;
@@ -90,11 +90,25 @@ button {
   border: 1px solid rgb(207, 205, 205);
   cursor:grabbing;
   height: auto;
-  opacity: 0.2;
-  transform: scaleY(1.1) rotate(1deg);
-  display: hidden;
-
-
+  opacity: 0.8;
+  transform:  rotate(4deg);
+}
+.sortable-drag {
+  border-radius: 3px;
+  background-color: rgb(196, 196, 196);
+  margin-top: 5px;
+  margin-left: 0px;
+  padding-left: 0px;
+  border: 1px solid rgb(207, 205, 205);
+  cursor:grabbing;
+  height: auto;
+  opacity: 1;
+  transform:  rotate(4deg);
+}
+.sortable-ghost {
+  color: transparent;
+  background-color: rgb(235, 235, 235);
+  transform:  rotate(0deg);
 }
 .ToDo__delete {
   display: flex;
